@@ -7,6 +7,8 @@ const fs = require("fs")
 const inquirer = require("inquirer")
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 
+const createHtml = require("./assets/templates/html")
+
 
 inquirer.prompt([
     {
@@ -87,9 +89,41 @@ inquirer.prompt([
         }
     }
 
-    console.log(manager)
-    console.log(engineers)
-    console.log(interns)
-
-    
+    const managerCard = createManagerCard(manager)
+    const engineerCards = createEngineerCards(engineers)
+    const internCards = createInternCards(interns)
+    const html = createHtml(managerCard, engineerCards, internCards)
 })
+
+function createManagerCard (manager) {
+    const managerCard = `<div class="card">
+    <div class="card-title">
+        <h3 class="name">${manager.name}</h3>
+        <h4 class="type">${manager.type}</h4>
+    </div>
+    <div class="card-body">
+        <p>ID: <span class="ID">${manager.id}</span></p>
+        <p>Email: <span class="Email"><a href="mailto:${manager.email}">${manager.email}</a></span></p>
+        <p>Office Number: <span class="officeNum">${manager.officeNum}</span></p>
+    </div>
+</div>`
+return managerCard
+}
+
+function createEngineerCards (engineers) {
+    let engineerCards = ``
+    for(let i = 0; i < engineers; i++) {
+        let engineer = engineers[i]
+        let card = `<div class="card">
+        <div class="card-title">
+            <h3 class="name">${engineer.name}</h3>
+            <h4 class="type">${engineer.type}</h4>
+        </div>
+        <div class="card-body">
+            <p>ID: <span class="ID">${engineer.id}</span></p>
+            <p>Email: <span class="Email"><a href="mailto:${engineer.email}">${engineer.email}</a></span></p>
+            <p>Github: <span class="Github">${engineer.github}</span></p>
+        </div>
+    </div>`
+    }
+}
