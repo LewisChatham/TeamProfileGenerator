@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "dependencies": {
     "inquirer": "^8.1.2",
-    "inquirer-loop": "^0.3.0"
+    "inquirer-loop": "^0.3.0",
+    "jest": "^27.0.6",
+    "node": "^16.6.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
