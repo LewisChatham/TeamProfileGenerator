@@ -30,7 +30,6 @@ function createEngineerCards (engineers) {
     </div>`
     engineerCards += card
     }
-    console.log(engineerCards)
     return engineerCards
 }
 
@@ -53,7 +52,6 @@ function createInternCards (interns) {
 
     internCards += card
     }
-    console.log(internCards)
     return internCards
 }
 
